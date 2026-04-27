@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# Epiroc Vehicle Dashboard (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Overview
+This is a React + TypeScript web application that recreates a vehicle dashboard interface.  
+It displays real-time data from a backend API and allows user interaction such as adjusting motor speed and toggling battery charging.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Demo
+Frontend: https://epiroc-dashboard-three.vercel.app/
+Backend API: https://epirocdashboardapi-1.onrender.com/api/dashboard
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
+- React (TypeScript)
+- Axios (API integration)
+- Component-based architecture
+- CSS / Inline styling
+- SVG for circular gauges
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Top Row Indicators
+- Parking Brake Indicator
+- Check Engine Indicator
+- Motor Status (high RPM warning)
+- Battery Low Warning
+- Tooltip support for each indicator
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Gauges
+- Motor RPM Gauge (circular SVG)
+- Power Gauge (real-time)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Middle Row
+- Gear Ratio
+- Battery Percentage
+- Motor RPM (numeric)
+- Speed Slider (updates backend in real time)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+### Bottom Row
+- Navigation buttons (UI only)
+- Charging Button (toggles backend state)
+- Real-time UI updates based on backend simulation
+
+---
+### Key Functionality
+Fetches dashboard data every 2 seconds
+Updates speed using slider (API call)
+Toggles charging state via backend
+Reflects backend simulation instantly in UI
+
+## API Integration
+
+Environment variable:
+
+```env
+VITE_API_BASE=https://epirocdashboardapi-1.onrender.com/api/dashboard
+
+Setup Instructions
+-------------------
+git clone https://github.com/anniegupta1709/epiroc-dashboard
+cd your-frontend-folder
+npm install
+npm start
+
+Build for Production
+--------------------
+npm run build
+
+Deployment
+-----------
+Hosted on Vercel
+Connected to backend hosted on Render
+Environment variables configured in Vercel dashboard
+
+## Author
+
+Annie Gupta
