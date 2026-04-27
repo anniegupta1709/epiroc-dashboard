@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "https://localhost:5095/api";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 // Get dashboard data
 export const getDashboard = () => {
